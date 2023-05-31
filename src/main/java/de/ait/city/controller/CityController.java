@@ -43,4 +43,9 @@ public class CityController {
         return service.addCity(city);
     }
 
+    @PostMapping(value="/{id}")
+    public CityResponseDTO upgradeCity(@PathVariable Long id, @RequestBody CityRequestDTO city){
+        return service.updateCity(id, city);
+    }
+
 }
