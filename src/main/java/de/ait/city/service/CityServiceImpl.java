@@ -50,15 +50,15 @@ public class CityServiceImpl {
 
     public CityResponseDTO addCity(CityRequestDTO city) {
         City c = new City(null, city.getName(), city.getCountry(), city.getPopulation(), city.getArea());
-        repository.save(c);
-        CityResponseDTO crdto = new CityResponseDTO();
-        return crdto; //??? return c;?
+        City res = repository.save(c);
+        CityResponseDTO crdto = new CityResponseDTO(res.getId(), res.getName(), res.getCountry(), res.getPopulation(), res.getArea());
+        return crdto;
     }
 
     public CityResponseDTO updateCity(Long id, CityRequestDTO city) {
         City c = new City(id, city.getName(), city.getCountry(), city.getPopulation(), city.getArea());
-        repository.save(c);
-        CityResponseDTO crdto = new CityResponseDTO();
+        City res = repository.save(c);
+        CityResponseDTO crdto = new CityResponseDTO(res.getId(), res.getName(), res.getCountry(), res.getPopulation(), res.getArea());
         return crdto;
     }
 

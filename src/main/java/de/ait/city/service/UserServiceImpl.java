@@ -40,15 +40,16 @@ public class UserServiceImpl {
 
     public UserResponseDTO addUser(UserRequestDTO user) {
         User u = new User(null, user.getFirstName(), user.getLastName(), user.getAge(), user.getGender());
-        repository.save(u);
-        UserResponseDTO urdto = new UserResponseDTO();
+        User res = repository.save(u);
+        UserResponseDTO urdto = new UserResponseDTO(res.getId(), res.getFirstName(), res.getLastName(), res.getAge(), res.getGender());
         return urdto; //??? return c;?
     }
 
     public UserResponseDTO updateUser(Long id, UserRequestDTO user) {
-        User u = new User(null, user.getFirstName(), user.getLastName(), user.getAge(), user.getGender());
-        repository.save(u);
-        UserResponseDTO urdto = new UserResponseDTO();
+        User u = new User(id, user.getFirstName(), user.getLastName(), user.getAge(), user.getGender());
+        User res = repository.save(u);
+        //UserResponseDTO urdto = new UserResponseDTO();
+        UserResponseDTO urdto = new UserResponseDTO(res.getId(), res.getFirstName(), res.getLastName(), res.getAge(), res.getGender());
         return urdto;
     }
 
