@@ -31,7 +31,7 @@ public class UserController {
         return service.addUser(user);
     }
 
-    @PostMapping(value="/{id}")
+    @PutMapping(value="/{id}")
     public UserResponseDTO upgradeUser(@PathVariable Long id, @RequestBody UserRequestDTO user){
         return service.updateUser(id, user);
     }
